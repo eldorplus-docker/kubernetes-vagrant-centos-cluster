@@ -10,14 +10,14 @@
 
 点击下面的图片观看视频。
 
-[![观看视频](https://ws4.sinaimg.cn/large/006tNbRwly1fyq0a5nx1pj30zk0k0whm.jpg)](https://www.bilibili.com/video/av39514214/)
+[![观看视频](https://ae01.alicdn.com/kf/U4416321c10a0444a9f12dd7f5bf722c9p.jpg)](https://www.bilibili.com/video/av39514214/)
 
 ## 准备环境
 
 需要准备以下软件和环境：
 
 - 8G以上内存
-- Vagrant 2.0+
+- Vagrant 2.0+（推荐使用 v2.0.2 版本）
 - VirtualBox 5.2（不支持 5.2 以上的版本）
 - 提前下载Kubernetes 1.9以上版本（支持最新的1.15.0）的release压缩包
 - Mac/Linux，**Windows不完全支持，仅在windows10下通过**
@@ -89,6 +89,11 @@ vagrant box add CentOS-7-x86_64-Vagrant-1801_02.VirtualBox.box --name centos/7
 ````
 
 这样下次运行`vagrant up`的时候就会自动读取本地的`centos/7` box而不会再到网上下载。
+
+#### Mac 安装说明
+
+在偏好设置 -> 安全性和隐私 -> 通用，点击被阻止的程序。
+然后在命令行终端中执行 `sudo "/Library/Application Support/VirtualBox/LaunchDaemons/VirtualBoxStartup.sh" restart `， 再执行 `vagrant up` 启动。
 
 **Windows 安装特别说明**
 

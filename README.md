@@ -39,8 +39,8 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 ### Prerequisite
 
 * Host server with 8G+ mem(More is better), 60G disk, 8 core cpu at lease
-* Vagrant 2.0+
-* VirtualBox 5.2 (5.2+ is not supported)
+* **Vagrant 2.0+（2.0.2 recommended）**
+* **VirtualBox 5.2 (5.2+ is not supported)**
 * Kubernetes 1.9+ (support the latest version 1.15.0)
 * Across GFW to download the kubernetes files (For China users only)
 * MacOS/Linux (**Windows is not supported completely**)
@@ -85,7 +85,7 @@ vagrant up
 
 Wait about 10 minutes the kubernetes cluster will be setup automatically.
 
-If you have difficult to vagrant up the cluster because of have no way to downlaod the `centos/7` box, you can download the box and add it first.
+If you have difficult to vagrant up the cluster because of have no way to download the `centos/7` box, you can download the box and add it first.
 
 **Add centos/7 box manually**
 
@@ -96,8 +96,16 @@ vagrant box add CentOS-7-x86_64-Vagrant-1801_02.VirtualBox.box --name centos/7
 
 The next time you run `vagrant up`, vagrant will import the local box automatically.
 
+#### Note for Mac
+
+VirtualBox may be blocked by Mac's security limit.
+Go to `System Preferences` - `Security & Privacy` - `Gerneral` click the blocked app and unblock it.
+
+Run  `sudo "/Library/Application Support/VirtualBox/LaunchDaemons/VirtualBoxStartup.sh" restart` in terminal and then `vagrant up`.
+
 #### Note for Windows
-- The project will run some bash script under the VirtualMachines. These scripts line ending need to be in LF. Git for windows set ```core.autocrlf``` true by default at the installation time. When you clone this project repository, this parameter (set to true) ask git to change all line ending to CRLF. This behavior need to be changed before cloning the repository (or after for each files by hand). We recommand to turn this to off by running ```git config --global core.autocrlf false``` and ```git config --global core.eol lf``` before cloning. Then, after cloning, do not forget to turn the behavior back if you want to run other windows projects: ```git config --global core.autocrlf true``` and ```git config --global core.eol crlf```.
+
+- The project will run some bash script under the VirtualMachines. These scripts line ending need to be in LF. Git for windows set ```core.autocrlf``` true by default at the installation time. When you clone this project repository, this parameter (set to true) ask git to change all line ending to CRLF. This behavior need to be changed before cloning the repository (or after for each files by hand). We recommend to turn this off by running ```git config --global core.autocrlf false``` and ```git config --global core.eol lf``` before cloning. Then, after cloning, do not forget to turn the behavior back if you want to run other windows projects: ```git config --global core.autocrlf true``` and ```git config --global core.eol crlf```.
 
 
 If you have executed the previous git global configuration then, you will not see these output while node3 is going to be complete:
@@ -132,7 +140,7 @@ There are 3 ways to access the kubernetes cluster.
 
 **local**
 
-In order to manage the cluster on local you should Install `kubectl` command line tool first(But, you don't need to do it manual because of ```install.sh``` script itself do this)
+In order to manage the cluster on local you should Install `kubectl` command line tool first(But, you don't need to do it manually because of ```install.sh``` script itself does this).
 
 Go to [Kubernetes release notes](https://kubernetes.io/docs/imported/release/notes/), download the client binaries, unzip it and then move `kubectl`  to your `$PATH` folder, for MacOS:
 
@@ -148,7 +156,7 @@ mkdir -p ~/.kube
 cp conf/admin.kubeconfig ~/.kube/config
 ```
 
-We recommend you fellow this way.
+We recommend you follow this way.
 
 **VM**
 
